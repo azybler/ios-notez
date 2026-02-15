@@ -1,7 +1,7 @@
 ---
 title: "feat: iOS Notez — Organization-First Notes App"
 type: feat
-status: active
+status: completed
 date: 2026-02-15
 brainstorm: docs/brainstorms/2026-02-15-ios-notez-brainstorm.md
 ---
@@ -232,23 +232,23 @@ Build the main page layout and folder/subfolder navigation.
 
 #### Tasks
 
-- [ ] Create `Views/MainPage/MainPageView.swift` — "Your notes" heading, sections for pinned, unsorted, folders, tags
-- [ ] Create `Views/MainPage/VirtualFolderRow.swift` — row for "All Pinned Notes" and "Unsorted Notes" with count badge
-- [ ] Create `Views/MainPage/FolderRow.swift` — folder name, color indicator, note count badge, indented subfolder rows
-- [ ] Create `Views/MainPage/TagRow.swift` — tag name, color chip, note count badge
-- [ ] Create `ViewModels/MainPageViewModel.swift` — `@Observable`, fetches counts for all sections using ValueObservation
-- [ ] Create GRDBQuery requests:
+- [x] Create `Views/MainPage/MainPageView.swift` — "Your notes" heading, sections for pinned, unsorted, folders, tags
+- [x] Create `Views/MainPage/VirtualFolderRow.swift` — row for "All Pinned Notes" and "Unsorted Notes" with count badge
+- [x] Create `Views/MainPage/FolderRow.swift` — folder name, color indicator, note count badge, indented subfolder rows
+- [x] Create `Views/MainPage/TagRow.swift` — tag name, color chip, note count badge
+- [x] Create `ViewModels/MainPageViewModel.swift` — `@Observable`, fetches counts for all sections using ValueObservation
+- [x] Create GRDBQuery requests:
   - `Requests/PinnedNotesCountRequest.swift`
   - `Requests/UnsortedNotesCountRequest.swift`
   - `Requests/FoldersWithCountsRequest.swift`
   - `Requests/TagsWithCountsRequest.swift`
-- [ ] Create `Views/FolderView/FolderDetailView.swift` — list of notes in folder, pinned first, sorted by modified_at DESC
-- [ ] Create `Views/FolderView/SubfolderSection.swift` — show subfolders at top of folder detail view
-- [ ] Create `Views/TagView/TagDetailView.swift` — list of notes with tag, pinned first, sorted by modified_at DESC
-- [ ] Create `Views/Shared/NoteRowView.swift` — title, snippet (configurable), tag chips, pin indicator, modified date
-- [ ] Wire up `NavigationStack` with `.navigationDestination` for Folder and Tag
-- [ ] Create empty state views: main page (no notes), folder (no notes in folder), tag (no notes with tag)
-- [ ] Create `Views/Trash/TrashView.swift` — list trashed notes, restore/permanent delete actions
+- [x] Create `Views/FolderView/FolderDetailView.swift` — list of notes in folder, pinned first, sorted by modified_at DESC
+- [x] Create `Views/FolderView/SubfolderSection.swift` — show subfolders at top of folder detail view
+- [x] Create `Views/TagView/TagDetailView.swift` — list of notes with tag, pinned first, sorted by modified_at DESC
+- [x] Create `Views/Shared/NoteRowView.swift` — title, snippet (configurable), tag chips, pin indicator, modified date
+- [x] Wire up `NavigationStack` with `.navigationDestination` for Folder and Tag
+- [x] Create empty state views: main page (no notes), folder (no notes in folder), tag (no notes with tag)
+- [x] Create `Views/Trash/TrashView.swift` — list trashed notes, restore/permanent delete actions
 
 #### Files
 
@@ -287,19 +287,19 @@ Create, edit, view, and manage individual notes.
 
 #### Tasks
 
-- [ ] Create `Views/NoteEditor/NoteEditorView.swift` — title field, Markdown body editor with formatting toolbar
-- [ ] Create `Views/NoteEditor/MarkdownToolbar.swift` — bold, italic, bullet list buttons. Each wraps/unwraps Markdown syntax around selection
-- [ ] Create `Views/NoteEditor/NotePreviewView.swift` — renders Markdown body using MarkdownUI library
-- [ ] Create `ViewModels/NoteEditorViewModel.swift` — `@Observable`, handles save (insert/update), auto-save on changes (debounced)
-- [ ] Implement note creation flow: + button on main page and folder views → opens NoteEditorView with empty note
-- [ ] Implement note editing flow: tap note row → opens NoteEditorView with existing note data
-- [ ] Implement folder assignment: picker in note editor to select folder (or "None" for unsorted)
-- [ ] Implement tag assignment: multi-select tag picker in note editor, option to create new tag inline
-- [ ] Implement pin/unpin: toggle in note editor and swipe action on note rows
-- [ ] Implement soft delete: swipe action on note rows → sets `deleted_at`, note moves to trash
-- [ ] Implement restore from trash: button in TrashView → clears `deleted_at`, restores to original folder (or Unsorted if folder deleted)
-- [ ] Implement permanent delete: button in TrashView → hard delete from database (CASCADE removes note_tags)
-- [ ] Implement trash auto-purge: on app launch, delete notes where `deleted_at` < 30 days ago
+- [x] Create `Views/NoteEditor/NoteEditorView.swift` — title field, Markdown body editor with formatting toolbar
+- [x] Create `Views/NoteEditor/MarkdownToolbar.swift` — bold, italic, bullet list buttons. Each wraps/unwraps Markdown syntax around selection
+- [x] Create `Views/NoteEditor/NotePreviewView.swift` — renders Markdown body using MarkdownUI library
+- [x] Create `ViewModels/NoteEditorViewModel.swift` — `@Observable`, handles save (insert/update), auto-save on changes (debounced)
+- [x] Implement note creation flow: + button on main page and folder views → opens NoteEditorView with empty note
+- [x] Implement note editing flow: tap note row → opens NoteEditorView with existing note data
+- [x] Implement folder assignment: picker in note editor to select folder (or "None" for unsorted)
+- [x] Implement tag assignment: multi-select tag picker in note editor, option to create new tag inline
+- [x] Implement pin/unpin: toggle in note editor and swipe action on note rows
+- [x] Implement soft delete: swipe action on note rows → sets `deleted_at`, note moves to trash
+- [x] Implement restore from trash: button in TrashView → clears `deleted_at`, restores to original folder (or Unsorted if folder deleted)
+- [x] Implement permanent delete: button in TrashView → hard delete from database (CASCADE removes note_tags)
+- [x] Implement trash auto-purge: on app launch, delete notes where `deleted_at` < 30 days ago
 
 #### Files
 
@@ -322,27 +322,27 @@ CRUD for folders and tags, including merge with undo.
 
 #### Tasks
 
-- [ ] Create `Views/FolderManagement/CreateFolderSheet.swift` — name input, optional parent folder picker (only top-level folders), color picker
-- [ ] Create `Views/FolderManagement/EditFolderSheet.swift` — rename, change color, delete with confirmation
-- [ ] Create `Views/TagManagement/CreateTagSheet.swift` — name input, color picker
-- [ ] Create `Views/TagManagement/EditTagSheet.swift` — rename, change color, delete with confirmation
-- [ ] Create `Views/TagManagement/MergeTagsSheet.swift` — multi-select source tags, pick target tag, preview affected note count, confirm
-- [ ] Create `Views/TagManagement/MergeHistoryView.swift` — list of past merges, undo button for each (LIFO order enforced)
-- [ ] Implement folder deletion: confirmation dialog showing affected note count → moves notes to Unsorted, promotes subfolders to top-level
-- [ ] Implement tag rename: update tag name → all note associations update automatically (same tag_id)
-- [ ] Implement tag merge:
+- [x] Create `Views/FolderManagement/CreateFolderSheet.swift` — name input, optional parent folder picker (only top-level folders), color picker
+- [x] Create `Views/FolderManagement/EditFolderSheet.swift` — rename, change color, delete with confirmation
+- [x] Create `Views/TagManagement/CreateTagSheet.swift` — name input, color picker
+- [x] Create `Views/TagManagement/EditTagSheet.swift` — rename, change color, delete with confirmation
+- [x] Create `Views/TagManagement/MergeTagsSheet.swift` — multi-select source tags, pick target tag, preview affected note count, confirm
+- [x] Create `Views/TagManagement/MergeHistoryView.swift` — list of past merges, undo button for each (LIFO order enforced)
+- [x] Implement folder deletion: confirmation dialog showing affected note count → moves notes to Unsorted, promotes subfolders to top-level
+- [x] Implement tag rename: update tag name → all note associations update automatically (same tag_id)
+- [x] Implement tag merge:
   1. Record snapshot: store list of note_ids that have the source tag(s) in `tag_merge_history`
   2. For each source tag: add target tag to all notes that have source tag (skip if already has target)
   3. Remove source tag from all notes
   4. Delete source tag records
-- [ ] Implement tag merge undo:
+- [x] Implement tag merge undo:
   1. Validate: only allow undo of most recent merge for a given target tag (LIFO)
   2. Recreate source tag with original name and color
   3. Re-assign source tag to notes in snapshot that still exist and are not permanently deleted
   4. Remove target tag from those notes (only if it wasn't already there before the merge — need to track this)
   5. Delete the merge history record
-- [ ] Create `Views/Shared/ColorPickerView.swift` — 12 preset colors + custom color picker
-- [ ] Add context menu / swipe actions on folder and tag rows (edit, delete)
+- [x] Create `Views/Shared/ColorPickerView.swift` — 12 preset colors + custom color picker
+- [x] Add context menu / swipe actions on folder and tag rows (edit, delete)
 
 #### Files
 
@@ -369,16 +369,16 @@ Build the hybrid search with visual filter chips and text-based prefix syntax.
 
 #### Tasks
 
-- [ ] Create `Search/SearchQueryToken.swift` — enum: `.tag(String)`, `.folder(String)`, `.text(String)`, `.and`, `.or`, `.not`, `.openParen`, `.closeParen`
-- [ ] Create `Search/SearchQueryTokenizer.swift` — Scanner-based tokenizer:
+- [x] Create `Search/SearchQueryToken.swift` — enum: `.tag(String)`, `.folder(String)`, `.text(String)`, `.and`, `.or`, `.not`, `.openParen`, `.closeParen`
+- [x] Create `Search/SearchQueryTokenizer.swift` — Scanner-based tokenizer:
   - Recognizes: `tag:"quoted name"`, `tag:simplename`, `folder:name`, `AND`, `OR`, `NOT`, `(`, `)`
   - Case-insensitive operators
   - Unquoted words treated as full-text search terms
-- [ ] Create `Search/SearchQueryParser.swift` — builds AST from tokens:
+- [x] Create `Search/SearchQueryParser.swift` — builds AST from tokens:
   - `SearchExpression` enum: `.tag(String)`, `.folder(String)`, `.text(String)`, `.and(SearchExpression, SearchExpression)`, `.or(SearchExpression, SearchExpression)`, `.not(SearchExpression)`, `.pinned(Bool)`
   - Respects operator precedence: NOT > AND > OR
   - Parentheses for grouping
-- [ ] Create `Search/SearchQueryBuilder.swift` — converts `SearchExpression` AST to GRDB `QueryInterfaceRequest<Note>`:
+- [x] Create `Search/SearchQueryBuilder.swift` — converts `SearchExpression` AST to GRDB `QueryInterfaceRequest<Note>`:
   - Tag filters: JOIN note_tags → tags WHERE name matches
   - Folder filters: WHERE folder_id IN (SELECT id FROM folders WHERE name matches)
   - NOT folder: WHERE folder_id NOT IN (...)
@@ -386,21 +386,21 @@ Build the hybrid search with visual filter chips and text-based prefix syntax.
   - Combine with AND/OR using GRDB's `&&` and `||` operators
   - Always appends `AND deleted_at IS NULL`
   - Always applies `ORDER BY is_pinned DESC, modified_at DESC`
-- [ ] Create `Search/SearchQuerySerializer.swift` — converts visual filter state back to text syntax (for visual→text mode switch)
-- [ ] Create `Views/Search/SearchView.swift` — search bar, mode toggle (visual/text), results list
-- [ ] Create `Views/Search/VisualFilterView.swift` — filter chip UI:
+- [x] Create `Search/SearchQuerySerializer.swift` — converts visual filter state back to text syntax (for visual→text mode switch)
+- [x] Create `Views/Search/SearchView.swift` — search bar, mode toggle (visual/text), results list
+- [x] Create `Views/Search/VisualFilterView.swift` — filter chip UI:
   - Tag chips with OR/AND toggle between them
   - Folder chips with include/exclude toggle
   - Pinned filter toggle
   - Add filter button (picks from available tags/folders)
-- [ ] Create `Views/Search/TextSearchView.swift` — text input field, syntax error display (inline below field), auto-complete suggestions for tag/folder names
-- [ ] Create `ViewModels/SearchViewModel.swift` — `@Observable`, holds filter state, parses queries, manages mode switching
-- [ ] Create `Requests/SearchResultsRequest.swift` — GRDBQuery request that takes a `SearchExpression` and returns `[Note]`
-- [ ] Implement mode switching:
+- [x] Create `Views/Search/TextSearchView.swift` — text input field, syntax error display (inline below field), auto-complete suggestions for tag/folder names
+- [x] Create `ViewModels/SearchViewModel.swift` — `@Observable`, holds filter state, parses queries, manages mode switching
+- [x] Create `Requests/SearchResultsRequest.swift` — GRDBQuery request that takes a `SearchExpression` and returns `[Note]`
+- [x] Implement mode switching:
   - Visual → Text: serialize filter state to query string
   - Text → Visual: attempt to parse and populate filter state; if too complex, show warning and stay in text mode
-- [ ] Handle empty results: show "No notes match your search" with clear filters button
-- [ ] Handle syntax errors: highlight error position, show message below search bar
+- [x] Handle empty results: show "No notes match your search" with clear filters button
+- [x] Handle syntax errors: highlight error position, show message below search bar
 
 #### Files
 
@@ -431,19 +431,19 @@ User settings, empty states, and final polish.
 
 #### Tasks
 
-- [ ] Create `Views/Settings/SettingsView.swift` — toggle snippet display on/off, stored in UserDefaults
-- [ ] Create `Utilities/UserSettings.swift` — `@Observable` wrapper around UserDefaults for settings
-- [ ] Create `Utilities/SnippetGenerator.swift` — strips Markdown syntax, takes first 120 chars, replaces newlines with spaces
-- [ ] Wire snippet toggle into `NoteRowView` — show/hide snippet based on setting
-- [ ] Add Trash entry to main page (below tags section, with count of trashed notes)
-- [ ] Add Settings gear icon to main page navigation bar
-- [ ] Add search icon to main page navigation bar → opens SearchView
-- [ ] Polish empty states for all views (main page, folders, tags, search, trash)
-- [ ] Add haptic feedback on pin/unpin, delete, restore actions
-- [ ] Add swipe actions on note rows: pin/unpin (leading), delete (trailing)
-- [ ] Add context menus on note rows: edit, move to folder, pin/unpin, delete
-- [ ] Add context menus on folder rows: edit, delete
-- [ ] Add context menus on tag rows: edit, merge, delete
+- [x] Create `Views/Settings/SettingsView.swift` — toggle snippet display on/off, stored in UserDefaults
+- [x] Create `Utilities/UserSettings.swift` — `@Observable` wrapper around UserDefaults for settings
+- [x] Create `Utilities/SnippetGenerator.swift` — strips Markdown syntax, takes first 120 chars, replaces newlines with spaces
+- [x] Wire snippet toggle into `NoteRowView` — show/hide snippet based on setting
+- [x] Add Trash entry to main page (below tags section, with count of trashed notes)
+- [x] Add Settings gear icon to main page navigation bar
+- [x] Add search icon to main page navigation bar → opens SearchView
+- [x] Polish empty states for all views (main page, folders, tags, search, trash)
+- [x] Add haptic feedback on pin/unpin, delete, restore actions
+- [x] Add swipe actions on note rows: pin/unpin (leading), delete (trailing)
+- [x] Add context menus on note rows: edit, move to folder, pin/unpin, delete
+- [x] Add context menus on folder rows: edit, delete
+- [x] Add context menus on tag rows: edit, merge, delete
 - [ ] Test with large datasets (1000+ notes, 50+ folders, 100+ tags) for performance
 
 #### Files
